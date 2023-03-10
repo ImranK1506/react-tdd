@@ -1,4 +1,17 @@
 describe('Cypress', () => {
+  beforeEach(() => {
+    cy.intercept('GET', 'PacketPublishing/React-Projects-Second-Edition/hotels',
+      {
+        fixture: 'hotels.json'
+      });
+    cy.intercept('GET', 'PacketPublishing/React-Projects-Second-Edition/hotels',
+      {
+        fixture: 'hotel.json'
+      });
+    cy.intercept('GET', 'PacketPublishing/React-Projects-Second-Edition/hotels',
+      []);
+  })
+
   it('opens the app and clicks on a hotel', () => {
     cy.visit('http://localhost:3000');
     cy.get('a').first().click();
